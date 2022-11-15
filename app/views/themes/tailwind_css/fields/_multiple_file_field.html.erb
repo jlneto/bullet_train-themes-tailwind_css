@@ -22,18 +22,16 @@
           <% form.object.send(method).each do |document| %>
             <%= link_to url_for(document), class: 'button download-file mr-3', data: { 'fields--file-field-target': 'downloadFileButton' } do %>
               <i class="leading-none mr-2 text-base ti ti-download"></i>
-              <span>Download <%= document.filename %></span>
+              <span><%= "#{I18n.t(:download)} #{document.filename}" %></span>
             <% end %>
           <% end %>
         <% end %>
         <% if form.object.send(method).attached? %>
-          <% form.object.send(method).each do |document| %>
             <div class="button-alternative cursor-pointer mr-3" data-action="click->fields--file-field#removeFile" data-fields--file-field-target="removeFileButton">
               <i class="leading-none mr-2 text-base ti ti-trash"></i>
-              <span>Remove <%= document.filename %></span>
+              <span><%= I18n.t(:remove_all_files) %></span>
             </div>
-          <% end %>
-      <% end %>
+        <% end %>
       </div>
       <div class="mt-2">
         <div class="button-alternative cursor-pointer" data-action="click->fields--file-field#uploadFile" data-fields--file-field-target="selectFileButton">
